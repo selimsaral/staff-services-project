@@ -6,7 +6,7 @@ class JobStatusEnum
 {
     const STATUSES = [
         1 => "İş Oluşturuldu",
-        2 => "İş'e Gidiliyor",
+        2 => "Konuma Gidiliyor",
         3 => "İşlemde",
         4 => "İş Tamamlandı",
     ];

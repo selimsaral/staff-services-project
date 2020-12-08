@@ -24,7 +24,7 @@ class CreateJobsTable extends Migration
             $table->date('date');
             $table->time('started_at');
             $table->time('finished_at');
-            $table->enum('status', ['İş Oluşturuldu', "İş'e Gidiliyor", 'İşlemde', 'İş Tamamlandı']);
+            $table->enum('status', ['İş Oluşturuldu', "Konuma Gidiliyor", 'İşlemde', 'İş Tamamlandı']);
             $table->integer('priority')->default(0);
             $table->timestamps();
 
