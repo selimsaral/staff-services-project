@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\JobRequest;
+use App\Jobs\JobPriorityUpdate;
 use App\Models\City;
 use App\Models\County;
 use App\Models\Employee;
@@ -27,6 +28,8 @@ class JobController extends Controller
     {
         Job::create($request->toArray());
 
+        JobPriorityUpdate::dispatch($request->employee_id);
+
         return redirect()->route('job-list')->with('success', 'İş Başarıyla Oluşturuldu');
     }
 
@@ -41,6 +44,8 @@ class JobController extends Controller
     public function update(JobRequest $request, Job $job): RedirectResponse
     {
         $job->update($request->toArray());
+
+        JobPriorityUpdate::dispatch($request->employee_id);
 
         return redirect()->route('job-show', ['job' => $job->id])
             ->with('success', 'İş Başarıyla Güncellendi');

@@ -6,6 +6,7 @@ use App\Enums\JobStatusEnum;
 use App\Helpers\HttpResponse;
 use App\Http\Requests\CreateJobRequest;
 use App\Http\Requests\UpdateJobStatusRequest;
+use App\Jobs\JobPriorityUpdate;
 use App\Models\Employee;
 use App\Models\Job;
 use Illuminate\Http\JsonResponse;
@@ -57,6 +58,8 @@ class EmployeeController extends Controller
     public function createJob(CreateJobRequest $request): JsonResponse
     {
         $job = Job::create($request->toArray());
+
+        JobPriorityUpdate::dispatch($request->employee_id);
 
         return HttpResponse::success($job->toArray());
     }
