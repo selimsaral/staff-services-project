@@ -59,9 +59,9 @@
         "period" : {1 , 2 ,3 ,4 değerlerinden biri gönderilmelidir}
         }'
       ```
+**NOT: Login hariç tüm Api endpoint'lerinde header'da token bilgisinin bulunması zorunludur, bu bilgi login işleminin response'ında bulunmaktadır.**
 
-
-**Admin Panelden "İş Oluşturma" , "İş Güncelleme" , "Api'den İş Oluşturma" işlemlerinden sonra kullanıcının tamamlanmamış olan tüm işlerinin öncelikleri Google Direction Api yardımıyla period ve tarih baz alınarak güncellenmektedir."**
+**Admin Panelden "İş Oluşturma" , "İş Güncelleme" , "Api'den İş Oluşturma" işlemlerinden sonra kullanıcının tamamlanmamış olan tüm işlerinin öncelikleri Google Direction Api yardımıyla period ve tarih baz alınarak en doğru güzargah'a göre güncellenmektedir."**
 * Örnek; 
   * **08.12.2020**
     * 09:00:00 - 12:00:00
