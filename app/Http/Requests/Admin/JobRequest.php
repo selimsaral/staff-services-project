@@ -1,10 +1,12 @@
 <?php
 
-namespace App\Http\Requests;
+namespace App\Http\Requests\Admin;
 
+use App\Enums\WorkPeriodEnum;
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Support\Carbon;
 
-class WorkRequest extends FormRequest
+class JobRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -28,10 +30,20 @@ class WorkRequest extends FormRequest
             'description' => 'required',
             'employee_id' => 'required',
             'city_id'     => 'required',
-            'county_id' => 'required',
+            'county_id'   => 'required',
             'address'     => 'required',
             'date'        => 'required',
             'period'      => 'required',
         ];
     }
+
+    public function passedValidation()
+    {
+        $this->merge([
+            'started_at'  => WorkPeriodEnum::periods[$this->period]['start'],
+            'finished_at' => WorkPeriodEnum::periods[$this->period]['end'],
+            'date'        => Carbon::parse($this->date)->format('Y-m-d')
+        ]);
+    }
+
 }

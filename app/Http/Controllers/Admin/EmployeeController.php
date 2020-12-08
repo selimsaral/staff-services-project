@@ -3,8 +3,9 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\EmployeeRequest;
+use App\Http\Requests\Admin\EmployeeRequest;
 use App\Models\Employee;
+use Illuminate\Http\RedirectResponse;
 
 class EmployeeController extends Controller
 {
@@ -15,13 +16,9 @@ class EmployeeController extends Controller
         return view('admin.employee.index', compact('list'));
     }
 
-    public function create(EmployeeRequest $request)
+    public function create(EmployeeRequest $request): RedirectResponse
     {
-        Employee::create([
-            'name'  => $request->name,
-            'email' => $request->email,
-            'phone' => $request->phone
-        ]);
+        Employee::create($request->toArray());
 
         return redirect()->route('employee-list')->with('success', 'Çalışan Başarıyla Oluşturuldu');
     }
@@ -31,12 +28,9 @@ class EmployeeController extends Controller
         return view('admin.employee.show', compact('employee'));
     }
 
-    public function update(EmployeeRequest $request, Employee $employee)
+    public function update(EmployeeRequest $request, Employee $employee): RedirectResponse
     {
-        $employee->name  = $request->name;
-        $employee->email = $request->email;
-        $employee->phone = $request->phone;
-        $employee->save();
+        $employee->update($request->toArray());
 
         return redirect()->route('employee-show', ['employee' => $employee->id])
             ->with('success', 'Çalışan Başarıyla Güncellendi');

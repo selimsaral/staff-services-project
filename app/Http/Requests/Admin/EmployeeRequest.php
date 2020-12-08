@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Requests;
+namespace App\Http\Requests\Admin;
 
 use Illuminate\Foundation\Http\FormRequest;
 
@@ -24,9 +24,18 @@ class EmployeeRequest extends FormRequest
     public function rules()
     {
         return [
-            'name'  => 'required',
-            'email' => 'required',
-            'phone' => 'required',
+            'name'     => 'required',
+            'email'    => 'required',
+            'phone'    => 'required',
+            'password' => 'required',
         ];
+    }
+
+
+    public function passedValidation()
+    {
+        $this->merge([
+            'password' => bcrypt($this->password),
+        ]);
     }
 }
