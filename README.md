@@ -25,24 +25,25 @@
     * Giriş Yapma ( Admin'den oluşturulan bilgilerle giriş yapılabilir)
       ```
       curl --location --request POST 'http://localhost:8884/api/employee/login' \
-        --header 'Content-Type: application/json' \
-        --data-raw '{
-        "email" : "calisan1@email.com",
-        "password" : "1234"
-        }'```   
+      --header 'Content-Type: application/json' \
+      --data-raw '{
+      "email" : "calisan1@email.com",
+      "password" : "1234"
+      }'
+        ```   
     * İş Listesi
         ```
            curl --location --request GET 'http://localhost:8884/api/employee/job-list' \
-            --header 'Authorization: Bearer {TOKEN}'
+           --header 'Authorization: Bearer {TOKEN}'
         ```
     * İş Statü Güncelleme
       ```
        curl --location --request POST 'http://localhost:8884/api/employee/job-update-status/{JOB_ID}' \
-        --header 'Authorization: Bearer {token}' \
-        --header 'Content-Type: application/json' \
-        --data-raw '{
-            "status" : {1 , 2 ,3 ,4 değerlerinden biri gönderilmelidir}
-        }'
+       --header 'Authorization: Bearer {token}' \
+       --header 'Content-Type: application/json' \
+       --data-raw '{
+       "status" : {1 , 2 ,3 ,4 değerlerinden biri gönderilmelidir}
+       }'
       ```
     * Yeni İş Oluşturma ( Çalışanın üzerindeki işlerden bağımsız işe gidebilme durumu )
       ```
