@@ -37,6 +37,10 @@
                                 <input type="text" name="phone" class="form-control" placeholder="Çalışan Telefon">
                             </div>
 
+                            <div class="form-group">
+                                <input type="text" name="password" class="form-control" placeholder="Uygulama Giriş Şifresi">
+                            </div>
+
                             <button type="submit" class="btn btn-primary">Kaydet</button>
                             @csrf
                         </form>
