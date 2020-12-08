@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\EmployeeController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -16,4 +17,15 @@ use Illuminate\Support\Facades\Route;
 
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
+});
+
+
+Route::group(['prefix' => 'employee'], function () {
+    Route::post('login', [EmployeeController::class, 'login']);
+
+    Route::group(['middleware' => 'auth:api_token'], function () {
+        Route::get('job-list', [EmployeeController::class, 'jobList']);
+        Route::post('job-update-status/{job}', [EmployeeController::class, 'updateJobStatus']);
+        Route::post('job-create', [EmployeeController::class, 'createJob']);
+    });
 });
