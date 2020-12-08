@@ -61,7 +61,7 @@
       ```
 
 
-**Admin Panelden "İş Oluşturma" , "İş Güncelleme" , "Api'den İş Oluşturma" işlemlerinden sonra kullanıcının tamamlanmamış olan tüm işlerinin öncelikleri Google Direction Api yardımıyla işlerin öncelikleri period ve tarih baz alınarak güncellenmektedir."**
+**Admin Panelden "İş Oluşturma" , "İş Güncelleme" , "Api'den İş Oluşturma" işlemlerinden sonra kullanıcının tamamlanmamış olan tüm işlerinin öncelikleri Google Direction Api yardımıyla period ve tarih baz alınarak güncellenmektedir."**
 * Örnek; 
   * **08.12.2020**
     * 09:00:00 - 12:00:00
