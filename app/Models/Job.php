@@ -28,4 +28,9 @@ class Job extends Model
     {
         return $this->hasOne(Employee::class, 'id', 'employee_id');
     }
+
+    public function city(): HasOne
+    {
+        return $this->hasOne(City::class, 'id', 'city_id');
+    }
 }
