@@ -96,6 +96,7 @@
                                 <th>Personel</th>
                                 <th>Tarih</th>
                                 <th>Saat Periodu</th>
+                                <th>Öncelik ( 1 : En Öncelikli )</th>
                                 <th>#</th>
                             </tr>
                             </thead>
@@ -108,6 +109,7 @@
                                     <td>{{ Illuminate\Support\Carbon::parse($item->started_at)->format('H:i') }}
                                         - {{ Illuminate\Support\Carbon::parse($item->finished_at)->format('H:i') }}
                                     </td>
+                                    <td>{{ $item->priority }}</td>
                                     <td>
                                         <a href="{{ route('job-show',['job' => $item->id]) }}">Güncelle</a>
                                     </td>
@@ -115,7 +117,9 @@
                             @endforeach
                             </tbody>
                         </table>
+                        {{ $list->links('vendor.pagination.bootstrap-4') }}
                     </div>
+
                 </div>
             </div>
         </div>

@@ -38,7 +38,8 @@
                             </div>
 
                             <div class="form-group">
-                                <input type="text" name="password" class="form-control" placeholder="Uygulama Giriş Şifresi">
+                                <input type="text" name="password" class="form-control"
+                                       placeholder="Uygulama Giriş Şifresi">
                             </div>
 
                             <button type="submit" class="btn btn-primary">Kaydet</button>
@@ -79,6 +80,7 @@
                             @endforeach
                             </tbody>
                         </table>
+                        {{ $list->links('vendor.pagination.bootstrap-4') }}
                     </div>
                 </div>
             </div>
