@@ -12,6 +12,7 @@ use App\Models\Job;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
+use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Str;
 
@@ -42,7 +43,11 @@ class EmployeeController extends Controller
 
     public function jobList(): JsonResponse
     {
-        $jobs = Job::where('employee_id', $this->user->id)->orderBy('priority', 'DESC')->get();
+        $jobs = Job::where('employee_id', $this->user->id)
+            ->where('date', Carbon::now()->format('Y-m-d'))
+            ->orderBy('started_at', 'DESC')
+            ->orderBy('priority', 'ASC')
+            ->get();
 
         return HttpResponse::success($jobs->toArray());
     }
