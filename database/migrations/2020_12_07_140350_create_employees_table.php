@@ -19,7 +19,7 @@ class CreateEmployeesTable extends Migration
             $table->string('email', 70)->unique();
             $table->string('phone', 70)->unique();
             $table->string('password', 255);
-            $table->string('api_token', 255)->unique();
+            $table->string('api_token', 255)->nullable()->unique();
             $table->timestamps();
         });
     }
