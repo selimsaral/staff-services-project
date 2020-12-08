@@ -2,7 +2,7 @@
 
 use App\Http\Controllers\Admin\EmployeeController;
 use App\Http\Controllers\Admin\HomeController;
-use App\Http\Controllers\Admin\WorkController;
+use App\Http\Controllers\Admin\JobController;
 use App\Http\Controllers\Auth\LoginController;
 use Illuminate\Support\Facades\Route;
 
@@ -35,11 +35,11 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
     });
 
     Route::group(['prefix' => 'job'], function () {
-        Route::get('/', [WorkController::class, 'index'])->name('job-list');;
-        Route::post('/create', [WorkController::class, 'create'])->name('job-create');
-        Route::get('/show/{job}', [WorkController::class, 'show'])->name('job-show');
-        Route::post('/update/{job}', [WorkController::class, 'update'])->name('job-update');
-        Route::post('/get-counties', [WorkController::class, 'getCounties'])->name('get-counties');
+        Route::get('/', [JobController::class, 'index'])->name('job-list');;
+        Route::post('/create', [JobController::class, 'create'])->name('job-create');
+        Route::get('/show/{job}', [JobController::class, 'show'])->name('job-show');
+        Route::post('/update/{job}', [JobController::class, 'update'])->name('job-update');
+        Route::post('/get-counties', [JobController::class, 'getCounties'])->name('get-counties');
     });
 
 });
